@@ -8,6 +8,10 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "nuxt": "^3.3.1"
+    "nuxt": "^3.3.2"
+  },
+  "dependencies": {
+    "@nuxtjs/firebase": "^8.2.2",
+    "firebase": "^9.18.0"
   }
 }
