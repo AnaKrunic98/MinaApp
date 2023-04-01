@@ -8,12 +8,18 @@
             </ul>
         </nav>
     </header>
-
     <div>
-        <slot />
+      <slot />
     </div>
 </div>
 </template>
+
+<script setup>
+// const { data: mountain } = await useFetch('/api/firestore/query');
+//
+// console.log(mountain);
+
+</script>
 
 <style scoped>
 .router-link-exact-active {
