@@ -43,13 +43,27 @@ export default {
         }
     },
     created() {
-
+      //this.handleMoodStore();
 
     },
     methods: {
        saveData(e){
         console.log(this.form);
-       } 
+       },
+       async handleMoodStore() {
+         const supabase = useSupabaseClient()
+
+         let { error } = await supabase
+             .from('moods')
+             .insert({ email: 'test@email.com' })
+
+         if(error) {
+           console.log('something went wrong');
+           console.log(error);
+         } else {
+           console.log('success');
+         }
+       }
     }
   }
 
