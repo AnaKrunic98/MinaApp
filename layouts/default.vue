@@ -85,11 +85,6 @@
 
 <script setup>
 
-// const { data: mountain } = await useFetch('/api/firestore/query');
-//
-// console.log(mountain);
-
-
 </script>
 
 <style scoped>
