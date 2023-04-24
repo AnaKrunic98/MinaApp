@@ -8,11 +8,13 @@
         <div class="grid gap-2 p-4 ">
           <div class="mb-4 mt-10">
             <label class="block text-sm font-medium text-gray-900 " for="inputName">Ime:</label>
-            <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="inputName" placeholder="Upisi ime" v-model="form.name">
+            <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+            id="inputName" placeholder="Upisi ime" v-model="form.name">
           </div>
           <div class="mb-4">
             <label class="block text-sm font-medium text-gray-900" for="inputEmail">Email adresa:</label>
-            <input type="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="inputEmail" placeholder="Upisi email" v-model="form.email">
+            <input type="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+            id="inputEmail" placeholder="Upisi email" v-model="form.email">
           </div>
       
           <div>
@@ -41,6 +43,8 @@
 
 <script>
 
+
+
 export default {
     data() {
         return{
@@ -68,18 +72,24 @@ export default {
     },
     created() {
       //this.handleMoodStore();
-
+      
     },
     methods: {
-       saveData(e){
+      async saveData(e) {
         console.log(this.form);
+        await this.handleMoodStore();
        },
+       setMood(mood) {
+        this.form.mood = mood;
+      },
        async handleMoodStore() {
+        console.log("dosao sam ovde"); 
+
          const supabase = useSupabaseClient()
 
          let { error } = await supabase
              .from('moods')
-             .insert({ email: 'test@email.com' })
+             .insert({ email: this.form.email, mood: this.form.mood })
 
          if(error) {
            console.log('something went wrong');
