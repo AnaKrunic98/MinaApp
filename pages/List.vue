@@ -23,7 +23,7 @@
 
           <!-- Dropdown menu -->
           <div id="dropdownDotsHorizontal" 
-          :style="{display}"
+          :style="{ 'display': state.display }"
           class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
                   <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
               <div class="py-2">
@@ -49,7 +49,8 @@
   
   const state = reactive({
     users: null,
-    errorMessage: null
+    errorMessage: null,
+    display: 'none'
   })
   
   async function fetchData() {
@@ -72,6 +73,16 @@
     fetchData()
   })
 
+  // Methods
+
+  function openDropdown () {
+    if(state.display === "none"){
+      state.display = "block";
+    } else {
+      state.display = "none";
+    }
+  }
+// ovo mozes da obrised dole
   /* export default{
   data(){
       return {
