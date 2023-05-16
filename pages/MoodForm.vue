@@ -67,9 +67,9 @@ export default {
               },
              ],
            form: {
-              name:"",
-              email:"",
-              mood:"",
+              name:null,
+              email:null,
+              mood:null,
             },
             
     }
@@ -82,6 +82,10 @@ export default {
       async saveData(e) {
         console.log(this.form);
         await this.handleMoodStore();
+        /*  clears the form
+        this.form.name=null
+        this.form.email=null
+        this.form.mood=null */
        },
        setMood(mood) {
         this.form.mood = mood.value;
