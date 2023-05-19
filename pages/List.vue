@@ -27,10 +27,13 @@
             class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
                 <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconHorizontalButton">
                   <li>
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
+                    <NuxtLink :to="`/users/${user.id}`"
+                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Update</NuxtLink> 
                   </li>
                   <li>
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Delete</a>
+                    <a href="#" 
+                    @click="deleteUser(user.id)"
+                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Delete</a>
                   </li>
                 </ul>
             </div>
@@ -44,7 +47,7 @@
 </template>
   
 
-  <script setup>
+<script setup>
   import { createClient } from '@supabase/supabase-js'
   import { reactive, onMounted } from 'vue'
   import { initFlowbite } from 'flowbite'
@@ -63,7 +66,7 @@
     try {
       const { data, error } = await supabase
         .from('users')
-        .select('first_name, last_name,phone')
+        .select('id,first_name, last_name, phone')
   
       if (error) {
         state.errorMessage = 'An error occurred: ' + error.message
@@ -79,5 +82,24 @@
     await fetchData();
     initFlowbite();
   })
+
+  async function deleteUser(userId) {
+    try {
+      const { error } = await supabase
+      .from('users')
+      .delete()
+      .eq('id', userId)
+
+    if (error) {
+      state.errorMessage = 'An error occurred while deleting the user: ' + error.message
+    } else {
+      state.users = state.users.filter(user => user.id !== userId)
+    }
+  } catch (error) {
+    state.errorMessage = 'An error occurred while deleting the user: ' + error.message
+  }
+}
+
+
 
   </script>

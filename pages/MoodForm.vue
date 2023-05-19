@@ -82,10 +82,10 @@ export default {
       async saveData(e) {
         console.log(this.form);
         await this.handleMoodStore();
-        /*  clears the form
+        //clears the form
         this.form.name=null
         this.form.email=null
-        this.form.mood=null */
+        this.form.mood=null 
        },
        setMood(mood) {
         this.form.mood = mood.value;

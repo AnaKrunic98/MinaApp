@@ -63,22 +63,26 @@
         /*  setMood(mood) {
           this.form.mood = mood;
         }, */
-          async handleUserStore() {
-          console.log("dosao sam ovde"); 
-  
-           const supabase = useSupabaseClient()
-  
-           let { error } = await supabase
-               .from('users')
-               .insert({first_name: this.form.first_name, last_name: this.form.last_name,  email: this.form.email, phone: this.form.phone  })
-  
-           if(error) {
-             console.log('something went wrong');
-             console.log(error);
-           } else {
-             console.log('success');
-           }
-         }
+        async handleUserStore() {
+        console.log("dosao sam ovde"); 
+
+          const supabase = useSupabaseClient()
+
+          let { error } = await supabase
+              .from('users')
+              .insert({first_name: this.form.first_name, last_name: this.form.last_name,  email: this.form.email, phone: this.form.phone  })
+
+          if(error) {
+            console.log('something went wrong');
+            console.log(error);
+          } else {
+            console.log('success');
+          }
+          this.form.first_name=null
+          this.form.last_name=null
+          this.form.email=null
+          this.form.phone=null
+        }
       }
     }
   
