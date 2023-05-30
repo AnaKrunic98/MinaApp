@@ -1,6 +1,6 @@
 <template>
     <div class="bg-green-100 min-h-screen">
-      <div class="flex justify-center py-4 font-medium">
+      <div class="flex justify-center py-10 font-medium">
         <span>User</span>
       </div>
       <div class="md:max-w-xl md:m-auto">

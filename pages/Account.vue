@@ -16,15 +16,9 @@
             </svg>
         </div>
         <div class="border-b border-gray-400 font-medium text-slate-600 p-4 flex justify-between ">
-            <div class="flex">
-                <svg class="w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5.636 5.636a9 9 0 1012.728 0M12 3v9"></path>
-                </svg>
-                <p class="ml-2">Log out</p>
-            </div>
-            <svg class="w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"></path>
-            </svg>
+            <div class="flex">  
+                <AppHeader/>
+            </div>  
         </div>
        </section>
     </div>

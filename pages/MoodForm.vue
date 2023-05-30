@@ -1,6 +1,6 @@
 <template>
   <div class=" bg-blue-100 min-h-screen">
-    <div class="flex justify-center py-4 font-medium">
+    <div class="flex justify-center py-10 font-medium">
       <span>Mood Form</span>
     </div>
     <div class="md:max-w-xl md:m-auto">
@@ -46,8 +46,21 @@
 </template>
 
 <script>
+
 export default {
-    data() {
+  setup() {
+    const user = useSupabaseUser ()
+
+    onMounted (() => {
+      watchEffect (() => {
+        if(!user.value) {
+          this.$router.push('/login')
+          // navigateTo ('/login')  this.$nuxt.$router.push('/login')
+        }
+      })
+    })
+
+  
       return{
         form: {
           name:null,
@@ -107,6 +120,10 @@ export default {
        }
     }
   }
+
+
+
+
 
 </script>
 

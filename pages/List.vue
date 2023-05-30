@@ -1,7 +1,7 @@
 <template>
-  <div class="relative overflow-visible shadow-md">
+  <div class="mt-10 relative overflow-visible shadow-md">
     <table v-if="state.users" class="w-full text-sm text-left text-gray-500">
-      <thead class="text-xs text-gray-500 uppercase">
+      <thead class="text-xs text-gray-500 uppercase border-t">
         <tr class="text-black border-b dark:border-gray-900">
           <th scope="col" class="px-6 py-3">First Name</th>
           <th scope="col" class="px-6 py-3">Last Name</th>

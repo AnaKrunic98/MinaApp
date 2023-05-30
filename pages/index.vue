@@ -1,7 +1,7 @@
 <template>
     <div class="bg-yellow-100 min-h-screen">
       <div class="flex flex-col items-center">
-        <div class="flex justify-center py-4 font-medium">
+        <div class="flex justify-center py-10 font-medium">
           <span>Home</span>
         </div>
         <div class="px-10 pt-4 pb-24 max-w-screen-md">

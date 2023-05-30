@@ -1,7 +1,8 @@
 <template>
+   
     <div class="fixed bottom-0 h-auto w-full bg-white border-t border-gray-800">
         <ul class="flex justify-evenly p-2">
-            <li>
+           <!--  <li>
                 <NuxtLink to="/Login">
                     <div
                     :class="{ active: isActive('/Login') }" 
@@ -12,7 +13,7 @@
                         <span class="text-sm">Log in</span>
                     </div>
                 </NuxtLink>
-            </li> 
+            </li>  -->
             <li>
                 <NuxtLink to="/User">
                     <div
@@ -54,10 +55,22 @@
                     <div 
                     :class="{ active: isActive('/List') }"
                     class="flex flex-col items-center">
+                        <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"></path>
+                        </svg>
+                        <span class="text-sm">List</span> 
+                    </div>
+                </NuxtLink>
+            </li>
+            <li>
+                <NuxtLink to="/Account">
+                    <div 
+                    :class="{ active: isActive('/Account') }"
+                    class="flex flex-col items-center">
                         <svg class="w-5"  fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"></path>
                         </svg>
-                        <span class="text-sm">List</span> 
+                        <span class="text-sm">Account</span> 
                     </div>
                 </NuxtLink>
             </li>
@@ -84,6 +97,7 @@ export default {
     return {route,isActive};
   }
 };
+
 </script>
 
 <style scoped>
@@ -93,5 +107,7 @@ export default {
   color: black;
   text-decoration:underline;
 }
+
+
 
 </style>
