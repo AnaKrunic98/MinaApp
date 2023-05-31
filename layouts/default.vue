@@ -1,7 +1,9 @@
 <template>
    
     <div class="fixed bottom-0 h-auto w-full bg-white border-t border-gray-800">
-        <ul class="flex justify-evenly p-2">
+        <ul
+        v-show="!isActive('/login')"
+        class="flex justify-evenly p-2">
            <!--  <li>
                 <NuxtLink to="/Login">
                     <div
