@@ -2,7 +2,7 @@
    
     <div class="fixed bottom-0 h-auto w-full bg-white border-t border-gray-800">
         <ul
-        v-show="!isActive('/login')"
+        v-show="user"
         class="flex justify-evenly p-2">
            <!--  <li>
                 <NuxtLink to="/Login">
@@ -91,12 +91,13 @@ export default {
   name: 'Navigation',
   setup() {
     const route = useRoute();
+    const user = useState('user').value;
 
     function isActive(path) {
       return route.path === path;
     }
 
-    return {route,isActive};
+    return {route, isActive, user};
   }
 };
 

@@ -16,6 +16,6 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     if (protectedRoutes.includes(to.path) && !user) {
       return '/login'; // Redirekcija na '/login' ako korisnik nije prijavljen
     }
-  
+
     useState('user', () => user);
   });
