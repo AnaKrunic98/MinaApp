@@ -51,14 +51,6 @@ export default {
   setup() {
     const user = useSupabaseUser ()
 
-    onMounted (() => {
-      watchEffect (() => {
-        if(!user.value) {
-          this.$router.push('/login')
-          // navigateTo ('/login')  this.$nuxt.$router.push('/login')
-        }
-      })
-    })
 
   
       return{
