@@ -57,22 +57,24 @@ console.log('error', error)
 }
 
 const login = async () => {
-const {data, error} = await supabase.auth.signInWithPassword({
+  const {data, error} = await supabase.auth.signInWithPassword({
     email: email.value,
     password: password.value
-})
-console.log('data', data)
-console.log('error', error)
+  })
+  console.log('data', data)
+  console.log('error', error)
+
+  await navigateTo('/MoodForm');
 }
 
-const user  = useSupabaseUser()
-onMounted(() => {
-  watchEffect(() => {
-    if (user.value) {
-      navigateTo('/MoodForm')
-    }
-  })
-})
+// const user  = useSupabaseUser()
+// onMounted(() => {
+//   watchEffect(() => {
+//     if (user.value) {
+//       navigateTo('/MoodForm')
+//     }
+//   })
+// })
 
 </script>
 

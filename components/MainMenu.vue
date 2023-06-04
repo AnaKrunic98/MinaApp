@@ -68,22 +68,15 @@
 </template>
 
 
-<script >
+<script setup>
 import { useRoute } from 'vue-router';
+const { user } = useUser()
 
-export default {
-  name: 'Navigation',
-  setup() {
-    const route = useRoute();
-    const user = useState('user').value;
+const route = useRoute();
 
-    function isActive(path) {
-      return route.path === path;
-    }
-
-    return {route, isActive, user};
-  }
-};
+function isActive(path) {
+  return route.path === path;
+}
 
 </script>
 

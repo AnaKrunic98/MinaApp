@@ -15,6 +15,7 @@
 
 <script setup>
 const supabase = useSupabaseAuthClient();
+const { setUserData } = useUser()
 
 const logout = async () => {
   const { error } = await supabase.auth.signOut();
@@ -24,7 +25,11 @@ const logout = async () => {
     return;
   }
 
-  await navigateTo('/login');
+  // Wait 2 second to supabase to register that user is logged out
+  setTimeout(async () => {
+    await navigateTo('/login');
+  },1000);
+
 };
 
 </script>
