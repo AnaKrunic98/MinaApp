@@ -8,13 +8,13 @@
         <div class="grid gap-2 p-4 ">
             <div class="mb-4 mt-10">
                 <label class="block text-sm font-medium text-gray-900 ">
-                    <input type="text" placeholder="Email address" v-model="email"
+                    <input type="text" placeholder="Email address" v-model="form.email"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >
                 </label>
             </div>
             <div class="mb-4">
                 <label class="block text-sm font-medium text-gray-900 ">
-                    <input type="password " placeholder="Password" v-model="password"
+                    <input type="password " placeholder="Password" v-model="form.password"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 </label>
             </div>
@@ -29,28 +29,51 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
 import { createClient } from '@supabase/supabase-js';
+const form = {
+  email: '',
+  password: ''
+};
 
-const email = ref('')
-const password = ref('')
 const client = useSupabaseClient ()
 const supabaseUrl = 'https://unrqqkhhvcsjwjdfdzua.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVucnFxa2hodmNzandqZGZkenVhIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODExNjI5MDIsImV4cCI6MTk5NjczODkwMn0.wTqg-3fQCovN3buBE5LGTfbu6Tv0k5gf4IFb3PL603Q';
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-  
+const validateForm = () => {
+  const errors = [];
+  let validated = true;
+
+  if (!form.email) {
+    errors.push('Email address is required');
+    validated = false;
+  }
+
+  if (!form.password) {
+    errors.push('Password is required');
+    validated = false;
+  }
+
+  return { validated, errors };
+};  
+
 const signUp = async () => {
-const { data, error } = await supabase.auth.signUp({
-    email: email.value,
-    password: password.value
-})
+  const { validated, errors } = validateForm();
 
-console.log('data', data)
-console.log('error', error)
+  if (validated) {
+  const { data, error } = await supabase.auth.signUp({
+      email: form.email,
+      password: form.password
+  })
 
+  console.log('data', data)
+  console.log('error', error)
+  console.log(form)
 
-await navigateTo('/MoodForm');
+  await navigateTo('/MoodForm');
+  }else {
+    console.log('Validation errors:', errors);
+}
 }
 
 
