@@ -22,11 +22,12 @@
                   <span>Log in</span>
                 </button>
         </div>
-        <div v-if="errors.length>0">
+        <div v-if="errors && errors.length > 0">
           <ul class="mx-5">
             <li v-for="error in errors">{{ error }}</li>
           </ul>
-        </div> 
+        </div>
+
       </form>
       <NuxtLink to="/signup" class="mx-5 hover:text-blue-700">You don't have an account</NuxtLink>
 
@@ -36,12 +37,13 @@
 
 <script setup>
 import { createClient } from '@supabase/supabase-js';
+import { ref } from 'vue';
 
 const form = {
   email:'',
   password:'' ,
 };
-const errors = [];
+const errors = ref([]);
 
 const client = useSupabaseClient ()
 const supabaseUrl = 'https://unrqqkhhvcsjwjdfdzua.supabase.co';
@@ -50,16 +52,18 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 const validateForm = () => {
   //resetuje niz, da se ne bi samo dodavale greske  
-  errors.length = 0 
+  errors.value = [];
+
+
   let validated = true;
 
   if (!form.email) {
-    errors.push('Email address is required');
+    errors.value.push('Email address is required');
     validated = false;
   }
 
   if (!form.password) {
-    errors.push('Password is required');
+    errors.value.push('Password is required');
     validated = false;
   }
 
