@@ -38,7 +38,6 @@
   const supabaseUrl = 'https://unrqqkhhvcsjwjdfdzua.supabase.co';
   const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVucnFxa2hodmNzandqZGZkenVhIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODExNjI5MDIsImV4cCI6MTk5NjczODkwMn0.wTqg-3fQCovN3buBE5LGTfbu6Tv0k5gf4IFb3PL603Q';
   const supabase = createClient(supabaseUrl, supabaseKey);
-
   const { id } = useRoute().params;
 
   // Deklaracija promenljive "form" i inicijalizacija praznim objektom

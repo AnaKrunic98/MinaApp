@@ -70,8 +70,8 @@
 
 <script setup>
 import { useRoute } from 'vue-router';
-const { user } = useUser()
 
+const { user } = useUser()
 const route = useRoute();
 
 function isActive(path) {

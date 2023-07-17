@@ -16,8 +16,8 @@
             </svg>
         </div>
         <div class="border-b border-gray-400 font-medium text-slate-600 p-4 flex justify-between ">
-            <div class="flex">  
-                <AppHeader/>
+            <div class="flex">
+                <LogOut/>
             </div>  
         </div>
        </section>
