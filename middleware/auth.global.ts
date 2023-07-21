@@ -10,10 +10,8 @@
 export default defineNuxtRouteMiddleware(async (to, from) => {
     const { setUserData } = useUser()
     const supabase = useSupabaseClient();
-    const { data: { user } } = await supabase.auth.getUser();
-
-    console.log('miidle');
-    console.log(user);
+    const { data: { session } } = await supabase.auth.getSession();
+    const user = session?.user;
 
     // Save user in store
     setUserData(user);
