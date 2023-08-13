@@ -27,7 +27,7 @@
                     </div>
                 </NuxtLink>
             </li>  -->
-            <li>
+            <!-- <li>
                 <NuxtLink to="/MoodForm">
                     <div 
                     :class="{ active: isActive('/MoodForm') }"
@@ -38,7 +38,7 @@
                         <span class="text-sm">Mood Form</span> 
                     </div>
                 </NuxtLink>
-            </li>
+            </li> -->
             <li>
                 <NuxtLink to="/List">
                     <div 

@@ -15,9 +15,10 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
 
     // Save user in store
     setUserData(user);
+    
 
     // Provera je li ruta u nizu za koje je potreban prijavljeni korisnik
-    const protectedRoutes = ['/MoodForm', '/Account', '/', '/User', "/List"]; 
+    const protectedRoutes = ['/Account','/account', '/', '/User','/user', "/List","/list"]; 
     if (protectedRoutes.includes(to.path) && !user) {
       return '/login'; // Redirekcija na '/login' ako korisnik nije prijavljen
     }

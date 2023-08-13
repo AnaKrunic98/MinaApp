@@ -8,15 +8,18 @@
           <div class="grid gap-2 p-4 ">
             <div class="mb-4 mt-10">
               <label class="block text-sm font-medium text-gray-900 " for="inputName">Ime:</label>
-              <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" id="inputName" placeholder="Upisi ime" v-model="form.first_name">
+              <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" id="inputName" placeholder="Upisi ime" 
+              v-model="form.first_name">
             </div>
             <div class="mb-4">
               <label class="block text-sm font-medium text-gray-900 " for="inputLastName">Prezime:</label>
-              <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-green-500 dark:focus:border-green-500" id="inputLastName" placeholder="Upisi prezime" v-model="form.last_name">
+              <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-green-500 dark:focus:border-green-500" id="inputLastName" placeholder="Upisi prezime" 
+              v-model="form.last_name">
             </div>
             <div class="mb-4">
               <label class="block text-sm font-medium text-gray-900" for="inputEmail">Email adresa:</label>
-              <input type="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" id="inputEmail" placeholder="Upisi email" v-model="form.email">
+              <input type="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" id="inputEmail" placeholder="Upisi email" 
+              v-model="form.email">
             </div>
             <div class="mb-4">
               <label class="block text-sm font-medium text-gray-900 " for="inputPhone">Telefon:</label>
@@ -87,7 +90,3 @@
     }
   
   </script>
-
-<style scoped>
-
-</style>
