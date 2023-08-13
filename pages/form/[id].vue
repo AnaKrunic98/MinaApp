@@ -65,7 +65,7 @@
 
   const setMood = (mood) => {
     selected.value = mood.mv;
-    console.log(selected.value)
+    console.log(selected.value);
   }
 
   const fetchUserData =  async (userId) => {
