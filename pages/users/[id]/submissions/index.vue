@@ -4,11 +4,16 @@
       <thead class="text-xs text-gray-500 uppercase border-t">
         <tr class="text-black border-b dark:border-gray-900">
           <th scope="col" class="pl-2">Id</th>
-          <th scope="col">created_at</th>
+          <th scope="col">Created_at</th>
+          <th scope="col">Mood</th>
         </tr>
       </thead>
       <tbody>
-        
+        <tr v-for="(submission, index) in userSubmissions" :key="index">
+          <td>{{ submission.id }}</td>
+          <td>{{ submission.createdat }}</td>
+          <td>{{ submission.mood }}</td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -16,27 +21,32 @@
 
 <script setup>
 import { useRoute } from 'vue-router'
-import { reactive, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 
 const supabase = useSupabaseClient(); 
 const { id } = useRoute().params;
 
-const userSubmissions = reactive({
-  id: null,
-  createdat: null,
-});
+const userSubmissions = ref([]);
 
 async function fetchData(userId) {
   try {
     const { data, error } = await supabase
       .from('submissions')
-      .select('user_id,created_at')
+      .select('created_at,user_id,mood')
       .eq('user_id', userId);
 
     if (error) {
       console.error('An error occurred:', error.message);
     } else {
       console.log('User data:', data);
+
+      data.forEach(submission => {
+        userSubmissions.value.push({
+          id: submission.user_id,
+          createdat: submission.created_at,
+          mood: submission.mood,
+        });
+      });
     }
   } catch (error) {
     console.error('An error occurred:', error.message);
@@ -46,4 +56,10 @@ async function fetchData(userId) {
 onMounted(async() => {
   await fetchData(id);
 });
+
+const letters =['a','b','c','b']
+
+let count = {}
+
+conso
 </script>

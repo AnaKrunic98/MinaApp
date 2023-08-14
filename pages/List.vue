@@ -23,8 +23,8 @@
             </NuxtLink>
           </td>
           <td>
-            <NuxtLink :to="`/form/${user.id}`" class="block">
-              <a href="#">http://localhost:3000/form/{{ user.id }}</a>
+            <NuxtLink :to="`/users/${user.id}/form`" class="block">
+              <a href="#">http://localhost:3000/users/{{ user.id }}/form</a>
             </NuxtLink>
           </td>    
           <td> 
@@ -45,7 +45,7 @@
                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Update</NuxtLink> 
                   </li>
                   <li>
-                    <NuxtLink :to="`/submissions/${user.id}`"
+                    <NuxtLink :to="`users/${user.id}/submissions`"
                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Submittions</NuxtLink> 
                   </li>
                   <li>

@@ -63,9 +63,7 @@
           console.log(this.form);
            await this.handleUserStore();
          },
-        /*  setMood(mood) {
-          this.form.mood = mood;
-        }, */
+   
         async handleUserStore() {
         console.log("dosao sam ovde"); 
 
