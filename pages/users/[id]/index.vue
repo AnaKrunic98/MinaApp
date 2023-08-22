@@ -77,6 +77,8 @@ async function updateUser(event) {
       .from('users')
       .update({first_name: form.value.firstName, last_name:form.value.lastName, email:form.value.email, phone:form.value.phone})
       .eq('id', id)
+      
+  await navigateTo('/List');
 }
 
 </script>
