@@ -95,7 +95,8 @@ if (validated.value){
   let { error } = await supabase
     .from('users')
     .insert({first_name: form.value.first_name, last_name: form.value.last_name,  email: form.value.email, phone: form.value.phone  })
-
+    await navigateTo('/List');
+    
 if(error) {
   console.log('something went wrong');
   console.log(error);

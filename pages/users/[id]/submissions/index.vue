@@ -57,9 +57,4 @@ onMounted(async() => {
   await fetchData(id);
 });
 
-const letters =['a','b','c','b']
-
-let count = {}
-
-conso
 </script>
