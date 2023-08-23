@@ -56,7 +56,7 @@ if (validated) {
   console.log('error', error)
   console.log(form)
 
-  await navigateTo('/List');
+  await navigateTo('/Users');
 }else {
   console.log('Validation errors:', errors);
 }

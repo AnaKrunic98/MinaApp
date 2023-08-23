@@ -7,7 +7,7 @@
       <p class= "flex justify-center mt-12">Kako se osećaš?</p>
       <button v-for="mood in moods" 
       @click="setMood(mood)" 
-      class="w-full max-w-xs my-2 mx-auto p-1 block text-white bg-blue-300 hover:bg-blue-500 focus:bg-blue-700 font-medium rounded-lg text-sm " >{{ mood.name }} </button>
+      class="w-full max-w-xs my-2 mx-auto p-1 block text-white bg-blue-300 hover:bg-blue-500 focus:bg-blue-700 font-medium rounded-lg text-sm " >{{ mood }} </button>
     </div>
   </div>
 </template>
@@ -22,51 +22,10 @@ const { id } = useRoute().params;
 const selected = ref()
 const firstName = ref()
 
-const moods = [
-  {
-    name: "Srećno",
-    mv: "happiness",
-  },
-  {
-    name: "Zadovoljno",
-    mv: "satisfactorily",
-  },
-  {
-    name: "Ponosno",
-    mv: "pride",
-  },
-  {
-    name: "Zahvalno",
-    mv: "gratitude",
-  },
-  {
-    name: "Motivisano",
-    mv: "motivation",
-  },
-  {
-    name: "Tužno",
-    mv: "sadness",
-  },
-  {
-    name: "Uplašeno",
-    mv: "fear",
-  },
-  {
-    name: "Ljuto",
-    mv: "anger",
-  },
-  {
-    name: "Besno",
-    mv: "fury",
-  },
-  {
-    name: "Neuspešno",
-    mv: "failure",
-  },
-]
+const moods = ["Srećno","Zadovoljno","Ponosno","Zahvalno","Motivisano","Tužno","Uplašeno","Ljuto","Besno","Neuspešno"]
 
 const setMood = async (mood) => {
-  selected.value = mood.mv;
+  selected.value = mood;
   console.log(selected.value);
 
   await handleMoodStore();
@@ -102,7 +61,7 @@ const handleMoodStore =  async () => {
 
   let { error } = await supabase
       .from('submissions')
-      .insert({ user_id: id, mood: selected.value})
+      .insert({ user_id: id, mood: selected.value, name:firstName.value})
 
   if(error) {
     console.log('something went wrong');

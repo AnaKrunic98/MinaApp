@@ -1,6 +1,16 @@
 <template>
-  <div class="mt-10 relative overflow-visible shadow-md">
-    <table v-if="state.users" class="w-full text-sm text-left text-gray-500">
+  <div class="mt-4 relative overflow-visible shadow-md">
+    <div class=" flex flex-row-reverse">
+        <NuxtLink to="/users/new" class="px-4 py-2 mr-4 bg-green-500 text-white rounded-md hover:bg-green-600">
+          <div class="flex items-center">
+              <svg class="w-5 mr-2" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z"></path>
+              </svg>
+              <span class="text-sm">Add User</span>
+          </div>
+        </NuxtLink>
+    </div>
+    <table v-if="state.users" class="mt-4 w-full text-sm text-left text-gray-500 ">
       <thead class="text-xs text-gray-500 uppercase border-t">
         <tr class="text-black border-b dark:border-gray-900">
           <th scope="col" class="pl-2">First Name</th>

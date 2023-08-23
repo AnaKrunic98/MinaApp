@@ -4,14 +4,14 @@
       <thead class="text-xs text-gray-500 uppercase border-t">
         <tr class="text-black border-b dark:border-gray-900">
           <th scope="col" class="pl-2">Id</th>
-          <th scope="col">Created_at</th>
+          <th scope="col">Created at</th>
           <th scope="col">Mood</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(submission, index) in userSubmissions" :key="index">
           <td>{{ submission.id }}</td>
-          <td>{{ submission.createdat }}</td>
+          <td>{{ formatDate(submission.createdat) }}</td>
           <td>{{ submission.mood }}</td>
         </tr>
       </tbody>
@@ -22,6 +22,13 @@
 <script setup>
 import { useRoute } from 'vue-router'
 import { ref, onMounted } from 'vue'
+import { format } from 'date-fns';
+
+function formatDate(dateTimeString) {
+  const createdAt = new Date(dateTimeString);
+  return format(createdAt, "HH:mm dd.MM.yyyy. ");
+}
+
 
 const supabase = useSupabaseClient(); 
 const { id } = useRoute().params;
