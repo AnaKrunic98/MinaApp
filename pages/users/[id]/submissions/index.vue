@@ -26,7 +26,7 @@ import { format } from 'date-fns';
 
 function formatDate(dateTimeString) {
   const createdAt = new Date(dateTimeString);
-  return format(createdAt, "HH:mm dd.MM.yyyy. ");
+  return format(createdAt, "dd.MM.yyyy. HH:mm");
 }
 
 

@@ -1,4 +1,5 @@
 <template>
+    
   <div class="mt-4 relative overflow-visible shadow-md">
     <div class=" flex flex-row-reverse">
         <NuxtLink to="/users/new" class="px-4 py-2 mr-4 bg-green-500 text-white rounded-md hover:bg-green-600">

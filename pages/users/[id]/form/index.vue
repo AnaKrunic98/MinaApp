@@ -1,4 +1,5 @@
 <template>
+
   <div class="bg-blue-100 min-h-screen">
     <div class="flex justify-center pt-8 font-medium">
       <span>Ćao, {{ firstName }}!</span>
@@ -29,6 +30,7 @@ const setMood = async (mood) => {
   console.log(selected.value);
 
   await handleMoodStore();
+  await navigateTo('/ThankYou');
 
 }
 
