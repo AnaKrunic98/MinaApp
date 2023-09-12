@@ -13,9 +13,10 @@
             <div class="bg-white p-4 mx-4 rounded-lg shadow-md flex items-center justify-center flex-col">
                 <h1 class="text-3xl font-semibold mb-4">Thank you!</h1>
                 <p class="text-gray-600 text-center">Prioritize your self-care by logging your mood frequently in the app. ;<br>We're here to support you!</p>
-                <button class="mt-6 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300">
-                Back to Home
-                </button>
+         
+                <NuxtLink to="/users" class="mt-6 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300">
+                    Express Another Feeling  
+                </NuxtLink>
             </div>
         </div>
     </div>

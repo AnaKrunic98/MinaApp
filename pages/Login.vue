@@ -1,12 +1,21 @@
  <template>
-    <div class=" bg-blue-100 min-h-screen">
+    <div class="relative bg-blue-100 min-h-screen">
       <div class="flex justify-center py-10 font-medium">
-        <span>Login</span>
+        <span >Login</span>
       </div>
       <div class="md:max-w-xl md:m-auto">
+      <div  v-if="errMessage" class="absolute top-14 flex items-center p-4 text-base text-red-700 rounded-l dark:bg-gray-800 dark:text-red-400" role="alert">
+        <svg class="flex-shrink-0 inline w-4 h-4 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+        </svg>
+        <span class="sr-only">Info</span>
+        <div>
+          <span class="font-medium">{{ errMessage }}</span> 
+        </div>
+      </div>
       <form @submit.prevent="login">
         <div class="grid gap-2 p-4 ">
-            <div class="mb-4 mt-10">
+            <div class="mb-4">
                 <label class="block text-sm font-medium text-gray-900 ">
                     <input type="text" placeholder="Email address" v-model="form.email" 
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >
@@ -40,11 +49,15 @@
 
 <script setup>
 const supabase = useSupabaseClient(); 
-
 const { form } = useForm();
 const { validateForm,errors } = useFormValidation();
 
+const errMessage = ref("")
+
+
 const login = async () => {
+errMessage.value = ''
+
 const { validated, errors } = validateForm(form);
 
 if (validated) {
@@ -52,11 +65,15 @@ if (validated) {
     email: form.email,
     password: form.password
   })
-  console.log('data', data)
-  console.log('error', error)
-  console.log(form)
+  if (error) {
+      console.error('Unsuccessful login:', error.message);
+      errMessage.value = 'Unsuccessful login'
+    } else {
+      console.log('Successful login:', data);
+      errMessage.value = ''
 
-  await navigateTo('/Users');
+      await navigateTo('/Users');
+    }
 }else {
   console.log('Validation errors:', errors);
 }

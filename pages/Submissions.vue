@@ -6,6 +6,7 @@
     <option v-for="p in state.per" :value="p.first_name">{{ p.first_name }} {{ p.last_name }}</option>
   </select>
 </div>
+<FullScreenLoader v-if="loading"/>
 <div class="mt-4 relative overflow-visible shadow-md">
   <table v-if="state.users" class="w-full text-sm text-left text-gray-500">
     <thead class="text-xs text-gray-500 uppercase border-t">
@@ -50,8 +51,10 @@ const state = reactive({
 })
 
 const filterName = ref('')
+const loading= ref(false)
 
 async function fetchData() {
+  loading.value = true
   try {
     const { data, error } = await supabase
       .from('submissions')
@@ -61,6 +64,7 @@ async function fetchData() {
       state.errorMessage = 'An error occurred: ' + error.message
     } else {
       state.users = data
+      loading.value = false
     }
   } catch (error) {
     state.errorMessage = 'An error occurred: ' + error.message
@@ -85,6 +89,7 @@ async function fetchUsers() {
   }
 
 async function applyFilter(filterName) {
+  loading.value = true
   try {
     const { data, error } = await supabase
       .from('submissions')
@@ -97,6 +102,7 @@ async function applyFilter(filterName) {
       state.errorMessage = 'An error occurred: ' + error.message
     } else {
       state.users = data
+      loading.value = false
     }
   } catch (error) {
     state.errorMessage = 'An error occurred: ' + error.message

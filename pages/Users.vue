@@ -1,5 +1,5 @@
 <template>
-    
+  <FullScreenLoader v-if="loading"/>
   <div class="mt-4 relative overflow-visible shadow-md">
     <div class=" flex flex-row-reverse">
         <NuxtLink to="/users/new" class="px-4 py-2 mr-4 bg-green-500 text-white rounded-md hover:bg-green-600">
@@ -88,7 +88,11 @@
     display: 'none'
   })
   
+  const loading= ref(false)
+
+
   async function fetchData() {
+      loading.value = true
     try {
       const { data, error } = await supabase
         .from('users')
@@ -98,6 +102,8 @@
         state.errorMessage = 'An error occurred: ' + error.message
       } else {
         state.users = data
+        loading.value = false
+
       }
     } catch (error) {
       state.errorMessage = 'An error occurred: ' + error.message
@@ -110,6 +116,7 @@
   })
 
   async function deleteUser(userId) {
+    loading.value = true
     try {
       const { error } = await supabase
       .from('users')
@@ -120,6 +127,8 @@
       state.errorMessage = 'An error occurred while deleting the user: ' + error.message
     } else {
       state.users = state.users.filter(user => user.id !== userId)
+      loading.value = false
+
     }
   } catch (error) {
     state.errorMessage = 'An error occurred while deleting the user: ' + error.message
