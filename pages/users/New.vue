@@ -49,6 +49,7 @@
   
   <script setup>
   import {ref} from 'vue'
+  const { ResetForm } = useResetForm();
   
   const errorMessages = ref([])
   const validated = ref(true);
@@ -89,24 +90,23 @@
   const handleUserStore = async () => {
   console.log("dosao sam ovde"); 
   const supabase = useSupabaseClient()
+  validated.value = true;
   validateForm()
+
+  if (!validated.value) {
+    return; 
+  }
+
+  let { error } = await supabase
+    .from('users')
+    .insert({first_name: form.value.first_name, last_name: form.value.last_name,  email: form.value.email, phone: form.value.phone  })
+  await navigateTo('/users');
   
-  if (validated.value){
-    let { error } = await supabase
-      .from('users')
-      .insert({first_name: form.value.first_name, last_name: form.value.last_name,  email: form.value.email, phone: form.value.phone  })
-      await navigateTo('/users');
-      
-  if(error) {
+  if (error) {
     console.log('something went wrong');
     console.log(error);
   } else {
     console.log('success');
   }
-  form.value.first_name=null
-  form.value.last_name=null
-  form.value.email=null
-  form.value.phone=null
-  }
-  }
+}
   </script>
